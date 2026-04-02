@@ -1,4 +1,6 @@
 🧱 Architecture
+
+
                   ┌──────────────┐
                   │  DEV SERVER  │  (Monitoring Server)
                   │              │
