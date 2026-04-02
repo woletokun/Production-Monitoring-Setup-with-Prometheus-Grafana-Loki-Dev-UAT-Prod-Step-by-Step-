@@ -1,20 +1,20 @@
 🧱 Architecture
-                ┌──────────────┐
-                │  DEV SERVER  │  (Monitoring Server)
-                │              │
-                │ Prometheus   │
-                │ Grafana      │
-                │ Loki         │
-                │ Alertmanager │
-                └─────┬────────┘
-                      │
-        ┌─────────────┼─────────────┐
-        │             │             │
-   ┌────▼────┐   ┌────▼────┐   ┌────▼────┐
-   │  DEV    │   │   UAT   │   │  PROD   │
-   │ NodeExp │   │ NodeExp │   │ NodeExp │
-   │Promtail │   │Promtail │   │Promtail │
-   └─────────┘   └─────────┘   └─────────┘
+                  ┌──────────────┐
+                  │  DEV SERVER  │  (Monitoring Server)
+                  │              │
+                  │ Prometheus   │
+                  │ Grafana      │
+                  │ Loki         │
+                  │ Alertmanager │
+                  └─────┬────────┘
+                        │
+          ┌─────────────┼─────────────┐
+          │             │             │
+     ┌────▼────┐   ┌────▼────┐   ┌────▼────┐
+     │  DEV    │   │   UAT   │   │  PROD   │
+     │ NodeExp │   │ NodeExp │   │ NodeExp │
+     │Promtail │   │Promtail │   │Promtail │
+     └─────────┘   └─────────┘   └─────────┘
 
 
 
