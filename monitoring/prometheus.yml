@@ -1,0 +1,29 @@
+global:
+  scrape_interval: 30s
+  evaluation_interval: 30s
+
+scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  # 🔹 DEV
+  - job_name: "node_dev"
+    static_configs:
+      - targets: ["104.248.24.171:9100"]
+        labels:
+          environment: "dev"
+
+  # 🔹 UAT
+  - job_name: "node_uat"
+    static_configs:
+      - targets: ["46.101.141.47:9100"]
+        labels:
+          environment: "uat"
+
+  # 🔹 PROD
+  - job_name: "node_prod"
+    static_configs:
+      - targets: ["YOUR_PROD_IP:9100"]
+        labels:
+          environment: "prod"

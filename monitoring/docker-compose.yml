@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - /opt/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml ##"--storage.tsdb.retention.time=7d"
+    ports:
+      - "104.248.24.171:9090:9090"
+    mem_limit: 400m
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "104.248.24.171:3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    mem_limit: 200m
+    restart: always
+
+  loki:
+    image: grafana/loki
+    container_name: loki
+    command: -config.file=/etc/loki/local-config.yaml
+    ports:
+      - "104.248.24.171:3100:3100"
+    mem_limit: 200m
+    restart: always
+
+  alertmanager:
+    image: prom/alertmanager
+    container_name: alertmanager
+    ports:
+      - "104.248.24.171:9093:9093"
+    mem_limit: 100m
+    restart: always
+
+volumes:
+  prometheus_data:
+  grafana_data:
